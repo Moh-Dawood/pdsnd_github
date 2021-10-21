@@ -10,7 +10,9 @@ _**Bikeshare Project**_
 It is a user interactive program that displays several statistics of the Bikeshare service filtered by the user criteria of choice
 
 ### Files used
-Include the files used
+1. new_york_city.csv
+2. chicago.csv
+3. washington.csv
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
