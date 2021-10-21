@@ -7,7 +7,7 @@ Date of README file Creation: **21/10/2021**
 _**Bikeshare Project**_
 
 ### Description
-Describe what your project is about and what it does
+It is a user interactive program that displays several statistics of the Bikeshare service filtered by the user criteria of choice
 
 ### Files used
 Include the files used
