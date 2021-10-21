@@ -15,4 +15,7 @@ It is a user interactive program that displays several statistics of the Bikesha
 3. washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+1. Udacity Classroom
+2. Corey Schafer Youtube Channel : https://www.youtube.com/c/Coreyms
+3. w3schools.com Pandas tutorial : https://www.w3schools.com/python/pandas/default.asp
+4. Python Documentation : https://docs.python.org/3/index.html
