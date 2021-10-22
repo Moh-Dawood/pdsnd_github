@@ -4,17 +4,17 @@ import time
 pd.set_option('display.max_columns', 8)
 
 # Reading the CSV files into DataFrames
-df = pd.read_csv('new_york_city.csv')
+df_new_york = pd.read_csv('new_york_city.csv')
 df_chicago = pd.read_csv('chicago.csv')
 df_washington = pd.read_csv('washington.csv')
 
 # Adding a City column to identify each of the 3 cities
-df['City'] = 'New York'
+df_new_york['City'] = 'New York'
 df_chicago['City'] = 'Chicago'
 df_washington['City'] = 'Washington'
 
 # Appending the 3 DataFrames
-df = df.append([df_chicago, df_washington], ignore_index=True)
+df = df_new_york.append([df_chicago, df_washington], ignore_index=True)
 
 # Converting Start Time Column into Datetime
 df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -25,9 +25,11 @@ df.insert(3, 'Start Day', df['Start Time'].dt.day_name())
 df.insert(4, 'Start Month', df['Start Time'].dt.month_name())
 
 # Creating Trip Course Column
-df.insert(9, 'Trip Course', '( ' + df['Start Station'] + ' ) ' + ' to ' + ' ( ' + df['End Station'] + ' )')
+df.insert(9, 'Trip Course', '( ' + df['Start Station'] +
+          ' ) ' + ' to ' + ' ( ' + df['End Station'] + ' )')
 
 # DataFrame Filter Function that uses City, Month & Day
+
 
 def fltr(city, month, day):
     """Filters the DataFrame by City, Month & Day"""
@@ -42,6 +44,7 @@ def fltr(city, month, day):
         new_df = new_df.loc[new_df['Start Day'] == day.title()]
 
     return new_df
+
 
 def time_stat(new_df, month, day):
     """Displays statistics on the most frequent times of travel."""
@@ -76,6 +79,7 @@ def time_stat(new_df, month, day):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
 
+
 def station_stat(new_df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -91,14 +95,17 @@ def station_stat(new_df):
     pop_trip = new_df['Trip Course'].mode()[0]
     pop_trip_count = new_df['Trip Course'].value_counts().values[0]
 
-    print(f"The Most Popular Start Station: ({pop_start_station}) with a count of {pop_start_station_count}")
+    print(
+        f"The Most Popular Start Station: ({pop_start_station}) with a count of {pop_start_station_count}")
     print(' ')
-    print(f"The Most Popular End Station: ({pop_end_station}) with a count of {pop_end_station_count}")
+    print(
+        f"The Most Popular End Station: ({pop_end_station}) with a count of {pop_end_station_count}")
     print(' ')
     print(f"The Most Popular Trip: {pop_trip} with a count of {pop_trip_count}")
     print(' ')
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
+
 
 def trip_duration_stats(new_df):
     """Displays statistics on the total and average trip duration."""
@@ -118,6 +125,7 @@ def trip_duration_stats(new_df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+
 def user_stats(new_df, city):
     """Displays statistics on bikeshare users."""
 
@@ -125,7 +133,7 @@ def user_stats(new_df, city):
     start_time = time.time()
 
     print('Number of Subscribers: ', new_df['User Type'].value_counts().loc['Subscriber'])
-    print('Number of Customers: ',new_df['User Type'].value_counts().loc['Customer'])
+    print('Number of Customers: ', new_df['User Type'].value_counts().loc['Customer'])
     print(' ')
 
     if city.title() != 'Washington':
@@ -147,6 +155,7 @@ def user_stats(new_df, city):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+
 def raw_data(new_df):
     """Lets the user view 5 rows of raw data at a time till the user says no"""
     print(' ')
@@ -158,6 +167,7 @@ def raw_data(new_df):
         n += 5
         print(' ')
         see = input('Would you like to see more raw data? Enter yes or no.\n')
+
 
 def main():
     while True:
@@ -176,7 +186,8 @@ def main():
         month = "No Filter"
         day = "No Filter"
         while True:
-            time_filter = input('Should we filter data by month, day, both or not at all? type none for no filter \n ')
+            time_filter = input(
+                'Should we filter data by month, day, both or not at all? type none for no filter \n ')
             if time_filter.lower() not in ['month', 'day', 'both', 'none']:
                 print(' ')
                 print('>>>Please choose one criteria from the list and check your spelling')
@@ -240,7 +251,6 @@ def main():
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
+
+
 main()
-
-
-
