@@ -46,6 +46,19 @@ def fltr(city, month, day):
     return new_df
 
 
+def month_filter():
+    while True:
+        print('Which Month Would You Like To View It\'s Statistics ?')
+        month = input('January, February, March, April, May, June : ')
+        if month.title() not in ['January', 'February', 'March', 'April', 'May', 'June']:
+            print(' ')
+            print('>>>Please choose one of those months and check your spelling')
+            print(' ')
+        else:
+            break
+    return month
+
+
 def time_stat(new_df, month, day):
     """Displays statistics on the most frequent times of travel."""
 
@@ -196,15 +209,8 @@ def main():
                 break
 
         if time_filter.lower() == 'month':
-            while True:
-                print('Which Month Would You Like To View It\'s Statistics ?')
-                month = input('January, February, March, April, May, June : ')
-                if month.title() not in ['January', 'February', 'March', 'April', 'May', 'June']:
-                    print(' ')
-                    print('>>>Please choose one of those months and check your spelling')
-                    print(' ')
-                else:
-                    break
+
+            month = month_filter()
 
         if time_filter.lower() == 'day':
             while True:
@@ -217,15 +223,8 @@ def main():
                 else:
                     break
         if time_filter.lower() == 'both':
-            while True:
-                print('Which Month Would You Like To View It\'s Statistics ?')
-                month = input('January, February, March, April, May, June : ')
-                if month.title() not in ['January', 'February', 'March', 'April', 'May', 'June']:
-                    print(' ')
-                    print('>>>Please choose one of those months and check your spelling')
-                    print(' ')
-                else:
-                    break
+            month = month_filter()
+
             while True:
                 print('Which Day Would You Like To View It\'s Statistics ?')
                 day = input('Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday : ')
