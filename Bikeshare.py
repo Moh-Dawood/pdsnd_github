@@ -59,6 +59,19 @@ def month_filter():
     return month
 
 
+def day_filter():
+    while True:
+        print('Which Day Would You Like To View It\'s Statistics ?')
+        day = input('Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday : ')
+        if day.title() not in ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']:
+            print(' ')
+            print('>>>Please choose one of those days and check your spelling')
+            print(' ')
+        else:
+            break
+    return day
+
+
 def time_stat(new_df, month, day):
     """Displays statistics on the most frequent times of travel."""
 
@@ -213,27 +226,14 @@ def main():
             month = month_filter()
 
         if time_filter.lower() == 'day':
-            while True:
-                print('Which Day Would You Like To View It\'s Statistics ?')
-                day = input('Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday : ')
-                if day.title() not in ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']:
-                    print(' ')
-                    print('>>>Please choose one of those days and check your spelling')
-                    print(' ')
-                else:
-                    break
+
+            day = day_filter()
+
         if time_filter.lower() == 'both':
+
             month = month_filter()
 
-            while True:
-                print('Which Day Would You Like To View It\'s Statistics ?')
-                day = input('Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday : ')
-                if day.title() not in ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']:
-                    print(' ')
-                    print('>>>Please choose one of those days and check your spelling')
-                    print(' ')
-                else:
-                    break
+            day = day_filter()
 
         new_df = fltr(city, month, day)
 
